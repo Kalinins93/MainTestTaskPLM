@@ -9,6 +9,7 @@
     <title>Clients List/Add</title>
 </h:head>
 <h:body>
+    <h:form>
     <div>
         <h3>Clients List</h3>
         <div>
@@ -37,12 +38,11 @@
                 </p:column>
                 <p:column width="30%">
                     <f:facet name="header">Client#</f:facet>
-                    <h:outputText value="#{accounts_list.client.username}"/>
+                    <h:outputText value="#{accounts_list.client}"/>
                 </p:column>
             </p:dataTable>
         </div>
     </div>
-    <h:form>
     <div>
         <h3>Add Client</h3>
 
