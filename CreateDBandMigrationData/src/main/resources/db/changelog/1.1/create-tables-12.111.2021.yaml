@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 12.11.2021-12-06-15-09-34
+      author: ilia
+      changes:
+        - sql:
+            sql: Create SEQUENCE account_id_seq;
+        - sql:
+            sql: Create SEQUENCE clients_id_seq;
+        - sql:
+            sql: GRANT ALL ON SEQUENCE public.account_id_seq TO postgres WITH GRANT OPTION;
+        - sql:
+            sql: GRANT ALL ON SEQUENCE public.clients_id_seq TO postgres WITH GRANT OPTION;
+        - sql:
+            sql: CREATE TYPE Status AS ENUM('open', 'close', 'suspend');
+        - sql:
+            sql: create table accounts(id INTEGER not null, balance INTEGER, opendate date,closedate date, status Status);
+        - sql:
+            sql: ALTER TABLE accounts ADD CONSTRAINT Account_PK PRIMARY KEY ( id );
+        - sql:
+            sql: CREATE TABLE clients (id INT not null, username varchar(255),  password varchar(255), birth_date date,  name varchar(255),  surname varchar(255),  account_id INTEGER not null,  PRIMARY KEY ( id ),  CONSTRAINT fk_id FOREIGN KEY (account_id) REFERENCES accounts(id));
+      comment: Add Accounts and Clients!

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>#{main.clients}</title>
+</h:head>
+<h:body>
+    <p:dataTable id="clients_list" value="#{ClientBean.clients}" var="clients_list"
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                 paginator="true" rows="10">
+        <p:column  width="10%">
+            <f:facet name="header">ID</f:facet>
+            <h:outputText value="#{clients_list.id}"/>
+        </p:column>
+        <p:column width="30%">
+            <f:facet name="header">Username</f:facet>
+            <h:outputText value="#{clients_list.username}"/>
+        </p:column>
+        <p:column width="30%">
+            <f:facet name="header">Password</f:facet>
+            <h:outputText value="#{clients_list.password}"/>
+        </p:column>
+        <p:column width="30%">
+            <f:facet name="header">Birth_date</f:facet>
+            <h:outputText value="#{clients_list.birth_date}"/>
+        </p:column>
+        <p:column width="30%">
+            <f:facet name="header">Name</f:facet>
+            <h:outputText value="#{clients_list.name}"/>
+        </p:column>
+        <p:column width="30%">
+            <f:facet name="header">Surname</f:facet>
+            <h:outputText value="#{clients_list.surname}"/>
+        </p:column>
+    </p:dataTable>
+    <p:commandButton id="back" value="Back" action="back" icon="ui-icon-cancel"/>
+</h:body>
+</html>

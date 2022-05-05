@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema>
+    <xs:complexType name="Account">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="0"></xs:element>
+            <xs:element name="currency" type="tns:currency" minOccurs="0"></xs:element>
+            <xs:element name="name" type="xs:string" minOccurs="0"></xs:element>
+            <xs:element name="population" type="xs:int"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="Client">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EUR"></xs:enumeration>
+            <xs:enumeration value="INR"></xs:enumeration>
+            <xs:enumeration value="USD"></xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Clients List/Add</title>
+</h:head>
+<h:body>
+    <div>
+        <h3>Clients List</h3>
+        <div>
+            <p:dataTable id="clients_list" value="#{AccountBean.accounts}" var="accounts_list"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+                         paginator="true" rows="10">
+                <p:column width="10%">
+                    <f:facet name="header">ID</f:facet>
+                    <h:outputText value="#{accounts_list.id}"/>
+                </p:column>
+                <p:column width="30%">
+                    <f:facet name="header">Balance</f:facet>
+                    <h:outputText value="#{accounts_list.balance}"/>
+                </p:column>
+                <p:column width="30%">
+                    <f:facet name="header">OpenDate</f:facet>
+                    <h:outputText value="#{accounts_list.openDate}"/>
+                </p:column>
+                <p:column width="30%">
+                    <f:facet name="header">CloseDate</f:facet>
+                    <h:outputText value="#{accounts_list.closeDate}"/>
+                </p:column>
+                <p:column width="30%">
+                    <f:facet name="header">Status</f:facet>
+                    <h:outputText value="#{accounts_list.status}"/>
+                </p:column>
+                <p:column width="30%">
+                    <f:facet name="header">Client#</f:facet>
+                    <h:outputText value="#{accounts_list.client.username}"/>
+                </p:column>
+            </p:dataTable>
+        </div>
+    </div>
+    <h:form>
+    <div>
+        <h3>Add Client</h3>
+
+        <div>
+            <label for="phone"><font size="4" style="font-weight: bold" color="red">*</font>Balance</label>
+            <h:inputText id="phone" size="30" maxlength="50" value="#{AccountBean.account.balance}" immediate="true"
+                         style="background: #FAFFBD"/>
+        </div>
+
+        <div>
+            <label for="email"><font size="4" style="font-weight: bold" color="red">*</font>OpenDate</label>
+            <h:inputText id="email" size="30" maxlength="50" value="#{AccountBean.account.openDate}" immediate="true"
+                         style="background: #FAFFBD"/>
+        </div>
+        <div>
+            <label for="email"><font size="4" style="font-weight: bold" color="red">*</font>CloseDate</label>
+            <h:inputText id="email" size="30" maxlength="50" value="#{AccountBean.account.closeDate}" immediate="true"
+                         style="background: #FAFFBD"/>
+        </div>
+        <div>
+            <label for="email"><font size="4" style="font-weight: bold" color="red">*</font>Status</label>
+            <h:inputText id="email" size="30" maxlength="50" value="#{AccountBean.account.status}" immediate="true"
+                         style="background: #FAFFBD"/>
+        </div>
+        <br/>
+        <p:commandButton id="back" value="Back" action="back" icon="ui-icon-cancel"/>
+        <p:commandButton id="addAccount" value="Add Account" action="#{AccountBean.addAccount()}"
+                         icon="ui-icon-arrowreturnthick-1-n" ajax="false"/>
+    </div>
+</h:form>
+</h:body>
+        </html>

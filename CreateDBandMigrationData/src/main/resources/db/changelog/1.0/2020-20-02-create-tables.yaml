@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 15967840934-2
+      author: ilia
+      changes:
+        - sql:
+            sql: Create table TEAM(id Integer PRIMARY KEY not null, name varchar(255));
+      comment: Add animal!

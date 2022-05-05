@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 12.11.2021-12-06-15-09-34
+      author: ilia
+      changes:
+        - sql:
+            sql: Create SEQUENCE audi_id_seq;
+        - sql:
+            sql: GRANT ALL ON SEQUENCE public.audi_id_seq TO postgres WITH GRANT OPTION;
+        - sql:
+            sql: CREATE TABLE audit(object_id INTEGER not null, object_type varchar(255),action_date date,new_value varchar(255),audit_action XML);
+        - sql:
+            sql: ALTER TABLE audit ADD CONSTRAINT AUDIT_PK PRIMARY KEY ( object_id );
+      comment: Add Audit!
