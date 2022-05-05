@@ -4,13 +4,13 @@ databaseChangeLog:
     author: myluc (generated)
     changes:
       - sql:
-          sql: insert into Accounts(id,balance, openDate,closeDate,status) values(nextval('account_id_seq'),0,'2002-06-20','2022-09-01',(SELECT enum_first(NULL::status)));
+          sql: insert into Clients (id,username,password,birth_date,name,surname) values(nextval('clients_id_seq'),'login3245','12345678','1993-09-01','Kate','Billons');
       - sql:
-          sql: insert into Clients (id,username,password,birth_date,name,surname,account_id) values(nextval('clients_id_seq'),'login3245','12345678','1993-09-01','Kate','Billons',(SELECT nextval('account_id_seq')-1));
+          sql: insert into Accounts(id,balance, openDate,closeDate,status,client_id) values(nextval('account_id_seq'),0,'2002-06-20','2022-09-01',(SELECT enum_first(NULL::status)),(SELECT nextval('clients_id_seq')-1));
       - sql:
-          sql: insert into Accounts(id,balance, openDate,closeDate,status) values(nextval('account_id_seq'),100,'1993-06-20','2022-09-01',(SELECT enum_first(NULL::status)));
+          sql: insert into Clients (id,username,password,birth_date,name,surname) values(nextval('clients_id_seq'),'l43534','12324324345678','1993-09-01','Tom','Dronov');
       - sql:
-          sql: insert into Clients (id,username,password,birth_date,name,surname,account_id) values(nextval('clients_id_seq'),'l43534','12324324345678','1993-09-01','Tom','Dronov',(SELECT nextval('account_id_seq')-1));
+          sql: insert into Accounts(id,balance, openDate,closeDate,status,client_id) values(nextval('account_id_seq'),100,'1993-06-20','2022-09-01',(SELECT enum_first(NULL::status)),(SELECT nextval('clients_id_seq')-1));
       - sql:
           sql: insert into Audit(object_id,object_type, action_date,new_value,audit_action)values(nextval('audi_id_seq'),'account','2002-06-20','34fsdf',XMLPARSE (DOCUMENT '<audit></audit>'));
     comment: Add clients and accounts!

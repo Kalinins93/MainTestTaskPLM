@@ -6,14 +6,14 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title>Clients List/Add</title>
+    <title>Account List/Add</title>
 </h:head>
 <h:body>
     <h:form>
     <div>
-        <h3>Clients List</h3>
+        <h3>Account List</h3>
         <div>
-            <p:dataTable id="clients_list" value="#{AccountBean.accounts}" var="accounts_list"
+            <p:dataTable id="accounts_list" value="#{AccountBean.accounts}" var="accounts_list"
                          paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
                          paginator="true" rows="10">
                 <p:column width="10%">
@@ -37,34 +37,41 @@
                     <h:outputText value="#{accounts_list.status}"/>
                 </p:column>
                 <p:column width="30%">
-                    <f:facet name="header">Client#</f:facet>
-                    <h:outputText value="#{accounts_list.client}"/>
+                    <f:facet name="header">id</f:facet>
+                    <h:outputText value="#{accounts_list.client.id}"/>
                 </p:column>
             </p:dataTable>
         </div>
     </div>
+        <div>
+            <label for="projects">Client</label>
+            <h:selectOneMenu value="#{AccountBean.account.client.id}" style="width: 250px">
+                <f:selectItem itemLabel="Select..." itemValue="-1" />
+                <f:selectItems value="#{AccountBean.clients}" var="client" itemValue="#{client.id}" itemLabel="#{client.name}" />
+            </h:selectOneMenu>
+        </div>
     <div>
-        <h3>Add Client</h3>
+        <h3>Add Account</h3>
 
         <div>
             <label for="phone"><font size="4" style="font-weight: bold" color="red">*</font>Balance</label>
-            <h:inputText id="phone" size="30" maxlength="50" value="#{AccountBean.account.balance}" immediate="true"
+            <h:inputText id="balance" size="30" maxlength="50" value="#{AccountBean.account.balance}" immediate="true"
                          style="background: #FAFFBD"/>
         </div>
 
         <div>
             <label for="email"><font size="4" style="font-weight: bold" color="red">*</font>OpenDate</label>
-            <h:inputText id="email" size="30" maxlength="50" value="#{AccountBean.account.openDate}" immediate="true"
+            <h:inputText id="openDate" size="30" maxlength="50" value="#{AccountBean.account.openDate}" immediate="true"
                          style="background: #FAFFBD"/>
         </div>
         <div>
             <label for="email"><font size="4" style="font-weight: bold" color="red">*</font>CloseDate</label>
-            <h:inputText id="email" size="30" maxlength="50" value="#{AccountBean.account.closeDate}" immediate="true"
+            <h:inputText id="closeDate" size="30" maxlength="50" value="#{AccountBean.account.closeDate}" immediate="true"
                          style="background: #FAFFBD"/>
         </div>
         <div>
             <label for="email"><font size="4" style="font-weight: bold" color="red">*</font>Status</label>
-            <h:inputText id="email" size="30" maxlength="50" value="#{AccountBean.account.status}" immediate="true"
+            <h:inputText id="status" size="30" maxlength="50" value="#{AccountBean.account.status}" immediate="true"
                          style="background: #FAFFBD"/>
         </div>
         <br/>
@@ -72,6 +79,7 @@
         <p:commandButton id="addAccount" value="Add Account" action="#{AccountBean.addAccount()}"
                          icon="ui-icon-arrowreturnthick-1-n" ajax="false"/>
     </div>
+        <h:link value="Clients (List/Add)" outcome="clients"/> <br/>
 </h:form>
 </h:body>
         </html>

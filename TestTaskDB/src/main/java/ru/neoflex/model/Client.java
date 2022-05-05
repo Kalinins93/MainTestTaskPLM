@@ -15,7 +15,7 @@ public class Client implements Serializable {
 
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name="generator", sequenceName="clients_id_seq")
+    @SequenceGenerator(name="generator", sequenceName="clients_id_seq",initialValue = 00000000000000000001)
     private int id;
     @Column(name = "username")
     private String username;
@@ -28,13 +28,17 @@ public class Client implements Serializable {
     @Column(name = "surname")
     private String surname;
 
-    @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="account_id")
-    private  Account account;
-
+    @OneToMany(fetch=FetchType.EAGER, mappedBy="id")
+    private List<Account> account;
+    public List<Account> getAccount() {
+        return this.account;
+    }
+    public void setAccount(List<Account> account) {
+        this.account = account;
+    }
     public Client() {
     }
-    public Client(String username, String password, Date birth_date, String name, String surname, Account account) {
+    public Client(String username, String password, Date birth_date, String name, String surname, List<Account> account) {
         this.username = username;
         this.password = password;
         this.birth_date = birth_date;
@@ -42,13 +46,7 @@ public class Client implements Serializable {
         this.surname = surname;
         this.account = account;
     }
-    public Account getAccount() {
-        return this.account;
-    }
 
-    public void setAccounts(Account account) {
-        this.account = account;
-    }
     public int getId() {
         return id;
     }

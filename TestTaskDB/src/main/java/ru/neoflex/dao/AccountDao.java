@@ -6,7 +6,7 @@ import java.util.List;
 
 public class AccountDao extends GenericDAO {
     private final GenericDAO<Account> genericDAO;
-    private AuditDao auditDao;
+  //  private AuditDao auditDao;
 
     public AccountDao(){
         this.genericDAO = new GenericDAO(){};

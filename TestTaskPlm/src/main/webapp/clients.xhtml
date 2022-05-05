@@ -38,7 +38,41 @@
             <h:outputText value="#{clients_list.surname}"/>
         </p:column>
     </p:dataTable>
-    <p:commandButton id="back" value="back" action="back" icon="ui-icon-cancel"/>
+
+    <div>
+        <h3>Add Client</h3>
+
+        <div>
+            <label for="phone"><font size="4" style="font-weight: bold" color="red">*</font>Username</label>
+            <h:inputText id="username" size="30" maxlength="50" value="#{ClientBean.client.username}" immediate="true"
+                         style="background: #FAFFBD"/>
+        </div>
+
+        <div>
+            <label for="email"><font size="4" style="font-weight: bold" color="red">*</font>Password</label>
+            <h:inputText id="password" size="30" maxlength="50" value="#{ClientBean.client.password}" immediate="true"
+                         style="background: #FAFFBD"/>
+        </div>
+        <div>
+            <label for="email"><font size="4" style="font-weight: bold" color="red">*</font>Birth_date</label>
+            <h:inputText id="birth_date" size="30" maxlength="50" value="#{ClientBean.client.birth_date}" immediate="true"
+                         style="background: #FAFFBD"/>
+        </div>
+        <div>
+            <label for="email"><font size="4" style="font-weight: bold" color="red">*</font>Name</label>
+            <h:inputText id="name" size="30" maxlength="50" value="#{ClientBean.client.name}" immediate="true"
+                         style="background: #FAFFBD"/>
+        </div>
+        <div>
+            <label for="email"><font size="4" style="font-weight: bold" color="red">*</font>Surname</label>
+            <h:inputText id="surname" size="30" maxlength="50" value="#{ClientBean.client.surname}" immediate="true"
+                         style="background: #FAFFBD"/>
+        </div>
+        <br/>
+        <h:commandButton id="back" value="Back" action="back" icon="ui-icon-cancel"/>
+        <h:commandButton value="Save" action="#{ClientBean.addAccount()}" class="btn btn-success btnWidth" />
+    </div>
+    <h:link value="Accounts (List/Add)" outcome="accounts"/><br/>
 </h:form>
 </h:body>
 </html>

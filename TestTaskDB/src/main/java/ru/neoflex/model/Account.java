@@ -13,7 +13,7 @@ import java.util.*;
 public class Account implements Serializable {
     @Id
     @Column(name = "id")
-    @SequenceGenerator(name="generator", sequenceName="account_id_seq")
+    @SequenceGenerator(name="generator", sequenceName="account_id_seq",initialValue = 00000000000000000001)
     private int id;
     @Column(name = "balance")
     private int balance;
@@ -24,18 +24,20 @@ public class Account implements Serializable {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @OneToMany(fetch=FetchType.EAGER, mappedBy="id")
-    private List<Client> client;
-    public List<Client> getClient() {
-        return this.client;
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="client_id")
+    private  Client client;
+
+    public Client getClient() {
+        return client;
     }
 
-    public void setCompany(List<Client> client) {
+    public void setClient(Client client) {
         this.client = client;
     }
     public Account() {
     }
-    public Account( int balance, Date openDate, Date closeDate, Status status,List<Client> client) {
+    public Account( int balance, Date openDate, Date closeDate, Status status,Client client) {
         this.balance = balance;
         this.openDate = openDate;
         this.closeDate = closeDate;

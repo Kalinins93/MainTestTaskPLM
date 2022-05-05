@@ -32,7 +32,7 @@ public class AccountBean implements Serializable {
 
             defaultValues();
 
-            return "";
+            return "Successfully Added.";
         }
 
         return "fail"; // You can create a specif error.xhtml page and handle here.
